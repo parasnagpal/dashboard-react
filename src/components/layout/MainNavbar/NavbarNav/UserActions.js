@@ -10,12 +10,15 @@ import {
   NavLink
 } from "shards-react";
 
+import axios from "axios";
+
 export default class UserActions extends React.Component {
   constructor(props) {
     super(props);
 
     this.state = {
-      visible: false
+      visible: false,
+      name:'XYZ'
     };
 
     this.toggleUserActions = this.toggleUserActions.bind(this);
@@ -26,7 +29,17 @@ export default class UserActions extends React.Component {
       visible: !this.state.visible
     });
   }
-
+  componentDidMount(){
+  
+    axios({
+      method:'get',
+      url:'http://cricsurf.com/author/1',
+      'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+      }).then(res=>{console.log(res)  
+        this.setState({name:res.data.name})
+      }).catch(err=>console.log(err))
+     
+  }
   render() {
     return (
       <NavItem tag={Dropdown} caret toggle={this.toggleUserActions}>
@@ -36,7 +49,7 @@ export default class UserActions extends React.Component {
             src={require("./../../../../images/avatars/0.jpg")}
             alt="User Avatar"
           />{" "}
-          <span className="d-none d-md-inline-block">Sierra Brooks</span>
+          <span className="d-none d-md-inline-block" id='name'>{this.state.name}</span>
         </DropdownToggle>
         <Collapse tag={DropdownMenu} right small open={this.state.visible}>
           <DropdownItem tag={Link} to="user-profile">

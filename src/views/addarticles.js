@@ -1,9 +1,11 @@
 import React from 'react';
 import {Form,FormInput,FormGroup,Button} from 'shards-react'
 
+import Editor from '../components/add-new-post/Editor' 
+
 import '../assets/css/bootstrap.min.css'
 const Home=()=>(
-    <div className='d-flex justify-content-start m-3'>
+    <div className=' m-4 p-3'>
     <Form>
         <FormGroup>
             <label>Title</label>
@@ -11,7 +13,7 @@ const Home=()=>(
         </FormGroup>
         <FormGroup>
             <label>Content</label>
-            <FormInput type='text' placeholder='Place your content here'></FormInput>
+            <Editor/>
         </FormGroup>
         <FormGroup>
             <label>Image</label>

@@ -1,9 +1,51 @@
 import React from 'react';
 import { Container, Row, Col, Card, CardHeader, CardBody } from "shards-react";
+import axios from 'axios'
 
 import PageTitle from "../components/common/PageTitle";
 
-const Home=()=>(
+
+
+class Home extends React.Component{ 
+  
+  constructor(props){
+    super(props)
+    this.state={
+      teams:[]
+    }
+    this.fetchCards=this.fetchCards.bind(this)
+  }
+
+  componentDidMount(){
+    //fetch teams
+    axios({
+      method:'get',
+      url:'http://cricsurf.com/teams/',
+      'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+      }).then(res=>{console.log(res)  
+        this.setState({
+          teams:res.data
+        })
+        
+      }).catch(err=>console.log(err))
+  }
+  
+  fetchCards(){
+    let teams=this.state.teams
+    return teams.map((value)=>
+      <tr>
+        <td>{value.key}</td>
+        <td>{value.name}</td>
+        <td>{value.status}</td>
+      </tr>
+    )
+     
+    
+  }
+
+  
+  render(){
+  return(
     <React.Fragment>
     <div>
         Hello, welcome to teams page.
@@ -39,27 +81,8 @@ const Home=()=>(
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td></td>
-                  
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td></td>
-                  <td></td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td></td>
-                  <td></td>  
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td></td>
-                  <td></td>
-                </tr>
+                {this.fetchCards()}
+                
               </tbody>
             </table>
           </CardBody>
@@ -68,6 +91,7 @@ const Home=()=>(
     </Row>
   </Container>
   </React.Fragment>
-);
+);}
+}
 
 export default Home
