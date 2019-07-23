@@ -1,9 +1,64 @@
 import React from 'react';
 import { Container, Row, Col, Card, CardHeader, CardBody ,Button} from "shards-react";
+import axios from 'axios'
 
 import PageTitle from "../components/common/PageTitle";
 
-const Home=()=>(
+
+class Home extends React.Component{
+   constructor(props){
+     super(props)
+     this.state={
+       articles:{},
+       array:[]
+     }
+   }
+
+   row(id,title,date){
+     return(
+       <tr>
+         <td>{id}</td>
+         <td>{title}</td>
+         <td>{date}</td>
+         <td><Button className='btn btn-warning'/></td>
+       </tr>
+     )
+   }
+
+   articles(){
+     let array=this.state.array
+     let articles=this.state.articles
+     for(let article in articles)
+     {
+       array[article]=articles[article]
+     }
+     console.log(array)
+     return array.map((value)=>
+      <tr>
+         <td>{value.id}</td>
+         <td>{value.title}</td>
+         <td>{value.created_on}</td>
+         <td><Button className='btn btn-warning'>Edit</Button></td>
+      </tr>
+     )
+     
+   }
+
+   componentDidMount(){
+    axios({
+      method:'get',
+      url:'http://cricsurf.com/api/posts/',
+      'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
+      }).then(res=>{
+        console.log(res) 
+        this.setState({
+          articles:res.data
+        })
+      }).catch(err=>console.log(err))
+   }
+    
+    render(){
+      return(
     <React.Fragment>
     <div>
         Hello, welcome to articles page.
@@ -41,34 +96,7 @@ const Home=()=>(
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td></td>
-                  <td></td>
-                  <td><Button className='btn-light'>Edit</Button></td>
-                  
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td></td>
-                  <td></td>
-                  <td><Button className='btn-light'>Edit</Button></td>
-
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td></td>
-                  <td></td>  
-                  <td><Button className='btn-light'>Edit</Button></td>
-
-                </tr>
-                <tr>
-                  <td>4</td>
-                  <td></td>
-                  <td></td>
-                  <td><Button className='btn-warning'>Edit</Button></td>
-
-                </tr>
+                {this.articles()}
               </tbody>
             </table>
            </CardBody>
@@ -77,6 +105,7 @@ const Home=()=>(
       </Row>
     </Container>
     </React.Fragment>
-);
+      )}
+}
 
 export default Home

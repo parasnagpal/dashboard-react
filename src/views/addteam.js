@@ -48,7 +48,7 @@ class Home extends React.Component{
       addteam(){
         axios({
             method:'post',
-            url:'http://cricsurf.com/team/',
+            url:'http://cricsurf.com/api/team/',
             'Content-Type': 'application/json',
             formData:{
                 name:'abc',

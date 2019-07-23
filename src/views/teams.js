@@ -20,7 +20,7 @@ class Home extends React.Component{
     //fetch teams
     axios({
       method:'get',
-      url:'http://cricsurf.com/teams/',
+      url:'http://cricsurf.com/api/teams/',
       'content-type': 'multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW',
       }).then(res=>{console.log(res)  
         this.setState({
