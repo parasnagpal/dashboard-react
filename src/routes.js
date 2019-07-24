@@ -11,7 +11,7 @@ import AddNewPost from "./views/AddNewPost";
 import Errors from "./views/Errors";
 
 
-
+import BlogOverView from './views/BlogOverview'
 import Home from './views/home';
 import Teams from './views/teams'
 import AddTeam from './views/addteam'
@@ -42,8 +42,12 @@ export default [
     component: Errors
   },
   
- 
-  
+  {
+    path: "/blog-overview",
+    layout: DefaultLayout,
+    component: BlogOverView
+  }
+  ,
   {
     path:'/home',
     layout: DefaultLayout,
