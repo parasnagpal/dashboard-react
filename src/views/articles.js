@@ -58,6 +58,7 @@ class Home extends React.Component{
    }
     
     render(){
+      if(this.props.loggedin)
       return(
     <React.Fragment>
     <div>
@@ -105,7 +106,9 @@ class Home extends React.Component{
       </Row>
     </Container>
     </React.Fragment>
-      )}
+      )
+      else return <>Not authorized.</>
+    }
 }
 
 export default Home

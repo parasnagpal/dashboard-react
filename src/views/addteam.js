@@ -58,6 +58,7 @@ class Home extends React.Component{
             .catch(err=>console.log(err))
      }
     render(){
+        if(this.props.loggedin)
         return(
             <div className='d-flex justify-content-center m-4 p-4'>
             <Container className="main-content-container px-4 pb-4">
@@ -81,6 +82,7 @@ class Home extends React.Component{
             </Container>
             </div>
         );
+        else return <>Not authorized.</>
     }
     
 };

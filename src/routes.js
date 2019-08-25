@@ -13,9 +13,9 @@ import Errors from "./views/Errors";
 
 import Home from './redux components/homecontainer';
 import Teams from './redux components/teamcontainer'
-import AddTeam from './views/addteam'
-import Articles from './views/articles'
-import AddArticles from './views/addarticles'
+import AddTeam from './redux components/addteamcontainer'
+import Articles from './redux components/articlescontainer'
+import AddArticles from './redux components/addarticlescontainer'
 
 
 

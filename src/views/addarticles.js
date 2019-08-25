@@ -4,7 +4,11 @@ import {Form,FormInput,FormGroup,Button} from 'shards-react'
 import Editor from '../components/add-new-post/Editor' 
 
 import './css/bootstrap.min.css'
-const Home=()=>(
+class Home extends React.Component{
+
+render(){
+  if(this.props.loggedin)
+  return(
     <div className=' m-4 p-3'>
     <Form>
         <FormGroup>
@@ -26,6 +30,9 @@ const Home=()=>(
         <Button className='btn-warning'>Publish</Button>
     </Form>
     </div>
-);
+  );
+  else return <>Not authorized.</>
 
-export default Home
+}
+}
+ export default Home
