@@ -7,7 +7,7 @@ import {
   } from "shards-react";
   
 import axios from 'axios'  
-import '../assets/css/bootstrap.min.css'
+import './css/bootstrap.min.css'
 
 
 

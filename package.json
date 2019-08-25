@@ -2,7 +2,7 @@
   "name": "shards-dashboard-lite-react",
   "version": "1.0.0",
   "private": true,
-  "homepage": "./",
+  "homepage": "./admin",
   "dependencies": {
     "axios": "^0.19.0",
     "camelize": "^1.0.0",
@@ -20,6 +20,7 @@
     "react-redux": "^7.1.0",
     "react-router-dom": "^4.3.1",
     "react-scripts": "2.1.1",
+    "redux": "^4.0.4",
     "request": "^2.88.0",
     "shards-react": "^1.0.0",
     "shortid": "^2.2.14"

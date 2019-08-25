@@ -13,7 +13,8 @@ class Home extends React.Component{
     this.state={
       teams:[]
     }
-    this.fetchCards=this.fetchCards.bind(this)
+  
+     this.fetchCards=this.fetchCards.bind(this)
   }
 
   componentDidMount(){
@@ -45,6 +46,7 @@ class Home extends React.Component{
 
   
   render(){
+  if(this.props.loggedin)
   return(
     <React.Fragment>
     <div>
@@ -91,7 +93,9 @@ class Home extends React.Component{
     </Row>
   </Container>
   </React.Fragment>
-);}
+);
+else return <>Not Authorized</>
+}
 }
 
 export default Home

@@ -6,29 +6,27 @@ import { DefaultLayout } from "./layouts";
 
 // Route Views
 
-import UserProfileLite from "./views/UserProfileLite";
+
 import AddNewPost from "./views/AddNewPost";
 import Errors from "./views/Errors";
 
 
-import Home from './views/home';
-import Teams from './views/teams'
+import Home from './redux components/homecontainer';
+import Teams from './redux components/teamcontainer'
 import AddTeam from './views/addteam'
 import Articles from './views/articles'
 import AddArticles from './views/addarticles'
 
+
+
+
+
 export default [
   {
-    path: "/",
+    path: "/admin",
     exact: true,
     layout: DefaultLayout,
     component: () => <Redirect to="/blog-overview" />
-  },
-  
-  {
-    path: "/user-profile-lite",
-    layout: DefaultLayout,
-    component: UserProfileLite
   },
   {
     path: "/add-new-post",

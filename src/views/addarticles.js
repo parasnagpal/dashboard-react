@@ -3,7 +3,7 @@ import {Form,FormInput,FormGroup,Button} from 'shards-react'
 
 import Editor from '../components/add-new-post/Editor' 
 
-import '../assets/css/bootstrap.min.css'
+import './css/bootstrap.min.css'
 const Home=()=>(
     <div className=' m-4 p-3'>
     <Form>
